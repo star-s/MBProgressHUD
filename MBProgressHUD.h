@@ -272,6 +272,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic, nullable) NSProgress *progressObject;
 
+/**
+ * Hide HUD when progressObject is finished or cancelled
+ * Defaults to NO.
+ */
+@property (assign, nonatomic) BOOL autoHideByProgressObject;
+
+/**
+ * Show description of progressObject on label
+ * Defaults to NO.
+ */
+@property (assign, nonatomic) BOOL showProgressDescription;
+
+/**
+ * Show localizedAdditionalDescription of progressObject on detailsLabel
+ * Defaults to NO.
+ */
+@property (assign, nonatomic) BOOL showAdditionalProgressDescription;
+
 /// @name Views
 
 /**

@@ -733,7 +733,18 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 }
 
 - (void)updateProgressFromProgressObject {
-    self.progress = self.progressObject.fractionCompleted;
+    NSProgress *progress = self.progressObject;
+    if (_autoHideByProgressObject && ([progress isFinished] || [progress isCancelled])) {
+        [self hideAnimated: YES];
+    } else {
+        if (_showProgressDescription) {
+            self.label.text = progress.localizedDescription;
+        }
+        if (_showAdditionalProgressDescription) {
+            self.detailsLabel.text = progress.localizedAdditionalDescription;
+        }
+        self.progress = progress.fractionCompleted;
+    }
 }
 
 #pragma mark - Notifications
